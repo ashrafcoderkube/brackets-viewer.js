@@ -228,12 +228,12 @@ function formatDateParts(dateStr: string): { dayMonth: string; time: string } {
 export function createDateContainer(data: string | null): HTMLElement {
     
     const date = document.createElement('div');
-    const datespan = document.createElement('span');
+    const datespan = document.createElement('div');
     date.classList.add('bracket-date');
     date.append(datespan);
     if(data){
         let dateDate =formatDateParts(data);
-        console.log(dateDate);
+        console.log("------------",dateDate);
         date.innerText = dateDate.dayMonth;
         datespan.innerText = dateDate.time;
     }

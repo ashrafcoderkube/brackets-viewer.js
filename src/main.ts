@@ -583,6 +583,10 @@ export class BracketsViewer {
         const matchContainer = dom.createMatchContainer();
         const opponents = dom.createOpponentsContainer();
 
+
+        const dateDiv = dom.createDateContainer(null);
+        opponents.append(dateDiv);
+
         const participant1 = this.createParticipant(null, true);
         const participant2 = this.createParticipant(null, true);
 
@@ -615,12 +619,17 @@ export class BracketsViewer {
             const participant2 = this.createParticipant(match.opponent2, propagateHighlight, 'opponent2', originHint, matchLocation, roundNumber);
 
             this.renderMatchLabel(opponents, match);
+            const dateDiv = dom.createDateContainer(match?.startTime || null);
+            opponents.append(dateDiv);
+    
             opponents.append(participant1, participant2);
         } else {
             const participant1 = this.createParticipant(match.opponent1, propagateHighlight, 'opponent1');
             const participant2 = this.createParticipant(match.opponent2, propagateHighlight, 'opponent2');
 
             this.renderMatchLabel(opponents, match);
+            const dateDiv = dom.createDateContainer(match?.startTime || null);
+            opponents.append(dateDiv);
             opponents.append(participant1, participant2);
         }
 

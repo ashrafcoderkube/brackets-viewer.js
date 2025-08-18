@@ -199,6 +199,15 @@ export function createNameContainer(): HTMLElement {
     name.classList.add('name');
     return name;
 }
+export function createDateContainer(data: string | null): HTMLElement {
+    
+    const date = document.createElement('div');
+    date.classList.add('bracket-date');
+    if(data){
+        date.innerText = data;
+    }
+    return date;
+}
 
 /**
  * Creates a container which contains the result of a match for a participant.

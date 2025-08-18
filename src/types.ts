@@ -46,7 +46,8 @@ export interface MatchWithMetadata extends Match {
         /** Count of rounds in the group this match is in. */
         roundCount?: number,
         /** Group type this match is in. */
-        matchLocation?: GroupType
+        matchLocation?: GroupType,
+        startTime? : string,
 
         // Other information
 

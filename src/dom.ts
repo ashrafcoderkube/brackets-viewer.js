@@ -199,12 +199,41 @@ export function createNameContainer(): HTMLElement {
     name.classList.add('name');
     return name;
 }
+
+function formatDateParts(dateStr: string): { dayMonth: string; time: string } {
+    const date = new Date(dateStr);
+  
+    if (isNaN(date.getTime())) {
+      console.log("Invalid date string");
+    }
+  
+    const optionsDayMonth: Intl.DateTimeFormatOptions = {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    };
+  
+    const optionsTime: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    };
+  
+    const dayMonth = date.toLocaleDateString("en-US", optionsDayMonth);
+    const time = date.toLocaleTimeString("en-US", optionsTime);
+  
+    return { dayMonth, time };
+  }
+  
 export function createDateContainer(data: string | null): HTMLElement {
     
     const date = document.createElement('div');
+    const datespan = document.createElement('span');
     date.classList.add('bracket-date');
     if(data){
-        date.innerText = data;
+        let dateDate =formatDateParts(data);
+        date.innerText = dateDate.dayMonth;
+        datespan.innerText = dateDate.dayMonth;
     }
     return date;
 }
